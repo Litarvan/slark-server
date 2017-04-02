@@ -1,4 +1,4 @@
-![Slark logo](https://github.com/Litarvan/slark-server/blob/master/assets/images/logo-full.png?raw=true)
+![Slark logo](https://github.com/Litarvan/slark-server/blob/master/logo.png?raw=true)
 
 # Slark server
 
