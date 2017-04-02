@@ -1,6 +1,8 @@
+![Slark logo](https://github.com/Litarvan/slark-server/blob/master/assets/images/logo-full.png?raw=true)
+
 # Slark server
 
-Server for the Slark update framework. See the [client here](Slark)
+Server for the Slark update framework. See the [client here](https://github.com/Litarvan/slark)
 
 # Requirements
 
@@ -10,7 +12,7 @@ Server for the Slark update framework. See the [client here](Slark)
 
 # Setting up
 
-Download the latest release [here](releases).
+Download the latest release [here](https://github.Co/Litarvan/slark-server/releases).
 Unzip it in any folder of your webroot.
 
 Go on it using your browser, and follow the instruction
