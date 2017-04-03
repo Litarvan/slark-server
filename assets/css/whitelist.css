@@ -1,5 +1,3 @@
-<?php
-
 /*
  * Copyright 2014-2017 Adrien 'Litarvan' Navratil
  *
@@ -19,14 +17,39 @@
  * along with Slark.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Slark\Jobs;
+#container {
+    padding: 25px;
+    text-align: center;
+}
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+#whitelist {
+    color: black;
+    box-shadow: 0 0 10px 5px black;
+    text-align: left;
+}
 
-abstract class Job implements ShouldQueue
-{
-    use InteractsWithQueue, Queueable, SerializesModels;
+#whitelist i {
+    padding-right: 7px;
+}
+
+#whitelist a {
+    color: black;
+}
+
+#whitelist a:hover {
+    cursor: pointer;
+}
+
+#buffer {
+    display: none;
+}
+
+.preloader-wrapper {
+    width: 30px;
+    height: 30px;
+    margin-top: 2px;
+}
+
+.spinner-layer {
+    border-color: #00c6e5;
 }

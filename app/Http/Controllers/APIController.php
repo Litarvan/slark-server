@@ -21,34 +21,17 @@
 
 namespace Slark\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-class AuthController extends Controller
+trait APIController
 {
-    function getLogin()
+    function json($data)
     {
-        return view('login');
-    }
-
-    function postLogin(Request $request)
-    {
-        $email = $request->get('email');
-        $password = $request->get('password');
-
-        if ($password != null && $email == config('auth.email') && hash_equals(crypt($password, env('APP_KEY')), config('auth.password')))
+        if (!is_string($data))
         {
-            $_SESSION['auth'] = true;
-            return redirect(route('home'));
+            $data = json_encode($data, JSON_PRETTY_PRINT);
         }
 
-        return view('login', [
-           'error' => true
+        return response($data, 200, [
+            'Content-Type' => 'application/json;charset=utf-8'
         ]);
-    }
-
-    function getLogout()
-    {
-        $_SESSION['auth'] = false;
-        return redirect(route('login'));
     }
 }

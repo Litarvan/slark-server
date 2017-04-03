@@ -19,7 +19,7 @@ $app->withFacades();
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+    Slark\Exceptions\Handler::class
 );
 
 $app->singleton(
@@ -29,21 +29,22 @@ $app->singleton(
 
 
 $app->middleware([
-    App\Http\Middleware\NoRewriteCompatibility::class
+    Slark\Http\Middleware\NoRewriteCompatibility::class
 ]);
 
 $app->routeMiddleware([
-    'auth' => App\Http\Middleware\Authenticate::class,
-    'guest' => App\Http\Middleware\Guest::class
+    'auth' => Slark\Http\Middleware\Authenticate::class,
+    'guest' => Slark\Http\Middleware\Guest::class
 ]);
 
 
-$app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+$app->register(Slark\Providers\AppServiceProvider::class);
+// $app->register(Slark\Providers\EventServiceProvider::class);
 
 
-$app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
+$app->group(['namespace' => 'Slark\Http\Controllers'], function ($app) {
     require __DIR__ . '/../routes/web.php';
+    require __DIR__ . '/../routes/api.php';
 });
 
 
