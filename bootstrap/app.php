@@ -27,11 +27,6 @@ $app->singleton(
     Laravel\Lumen\Console\Kernel::class
 );
 
-
-$app->middleware([
-    Slark\Http\Middleware\NoRewriteCompatibility::class
-]);
-
 $app->routeMiddleware([
     'auth' => Slark\Http\Middleware\Authenticate::class,
     'guest' => Slark\Http\Middleware\Guest::class

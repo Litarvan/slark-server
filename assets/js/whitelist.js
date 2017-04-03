@@ -17,9 +17,16 @@
  * along with Slark.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var dialog = false;
+
 $(document).ready(function()
 {
-    $('.modal').modal();
+    $('.modal').modal({
+        complete: function()
+        {
+            dialog = false;
+        }
+    });
 });
 
 $('body').on('keydown', function(e)
@@ -27,7 +34,15 @@ $('body').on('keydown', function(e)
    if (e.which === 13)
    {
        e.preventDefault();
-       addDialog();
+
+       if (dialog)
+       {
+           eval($("#d-trigger").attr('onclick'));
+       }
+       else
+       {
+           addDialog();
+       }
    }
 });
 
@@ -48,6 +63,8 @@ function addDialog()
 
 function deleteDialog(id, file)
 {
+    dialog = true;
+
     $("#file").html(file);
     $("#d-trigger").attr('onclick', 'deleteEntry(' + id + ', "' + file + '")');
 

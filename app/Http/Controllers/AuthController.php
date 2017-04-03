@@ -38,7 +38,7 @@ class AuthController extends Controller
         if ($password != null && $email == config('auth.email') && hash_equals(crypt($password, env('APP_KEY')), config('auth.password')))
         {
             $_SESSION['auth'] = true;
-            return redirect(route('home'));
+            return redirect(path('home'));
         }
 
         return view('login', [
@@ -49,6 +49,6 @@ class AuthController extends Controller
     function getLogout()
     {
         $_SESSION['auth'] = false;
-        return redirect(route('login'));
+        return redirect(path('login'));
     }
 }

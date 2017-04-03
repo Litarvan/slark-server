@@ -59,6 +59,8 @@ class WhitelistController
             $files = json_decode(file_get_contents($this->file));
             $files[] = $request->get('value');
 
+            sleep(1);
+
             file_put_contents($this->file, json_encode($files, JSON_PRETTY_PRINT));
         }
     }
@@ -78,6 +80,8 @@ class WhitelistController
                     break;
                 }
             }
+
+            sleep(1);
 
             file_put_contents($this->file, json_encode($files, JSON_PRETTY_PRINT));
         }

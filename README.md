@@ -19,7 +19,7 @@ Go on it using your browser, and follow the instruction
 
 ## Apache
 
-You need to enable AllowOverride, for that, change every `AllowOverride None` to `AllowOverride All` in /etc/apache2/apache2.conf
+You need to enable AllowOverride, for that, in your apache config (/etc/apache2/apache2.conf or /etc/httpd/conf/httpd.conf), between `<Directory /var/www/>` (/var/www is your document root, it can be /var/www/html, or /srv/http, etc...) and `</Directory>`, change `AllowOverride None` to `AllowOverride All` in /etc/apache2/apache2.conf
 Otherwise the config (includes your password) could be read by everyone !
 
 Mod rewrite is optional

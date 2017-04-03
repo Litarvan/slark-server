@@ -28,7 +28,7 @@ class Authenticate
     public function handle($request, Closure $next)
     {
         if (!isset($_SESSION['auth']) || !$_SESSION['auth']) {
-            return redirect(route('login'));
+            return redirect(path('login'));
         }
 
         return $next($request);

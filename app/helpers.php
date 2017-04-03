@@ -61,6 +61,16 @@ if (!function_exists('path')) {
      * @return string
      */
     function path($route) {
-        return (!has_rewrite() ? '/index.php' : '') . route($route);
+        $path = route($route);
+
+        if (!has_rewrite() && !str_contains($path, 'index.php'))
+        {
+            $base = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
+            $route = substr($path, strlen(substr($base, 0, strlen($base) - strlen('index.php/'))));
+
+            $path = $base . $route;
+        }
+
+        return $path;
     }
 }

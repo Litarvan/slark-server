@@ -22,6 +22,7 @@
 // Redirect
 
 $app->get('/', function () use ($app) {
+    \Log::info(path('login'));
    return redirect(path('login'));
 });
 

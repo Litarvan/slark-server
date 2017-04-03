@@ -28,7 +28,7 @@ class Guest
     public function handle($request, Closure $next)
     {
         if (isset($_SESSION['auth']) && $_SESSION['auth']) {
-            return redirect(route('home'));
+            return redirect(path('home'));
         }
 
         return $next($request);
