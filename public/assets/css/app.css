@@ -49,8 +49,13 @@
 
 nav {
     background: none;
-    margin-top: 7.5vh;
-    box-shadow: -1px -8vh 2px 1px black;
+    /*box-shadow: -1px -8vh 2px 1px black;*/
+}
+
+@media only screen and (min-height: 800px) {
+    nav {
+        margin-top: 7.5vh;
+    }
 }
 
 nav li {
