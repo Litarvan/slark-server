@@ -17,6 +17,8 @@
  * along with Slark.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var storage = window.localStorage;
+
 var dialog = false;
 
 var elDTrigger = $('#d-trigger');
@@ -38,6 +40,11 @@ $(document).ready(function()
             dialog = false;
         }
     });
+
+    if (!storage.getItem('slark.whitelist.help'))
+    {
+        openHelp();
+    }
 });
 
 $('body').on('keydown', function(e)
@@ -132,4 +139,14 @@ function deleteEntry(id, file)
 
         elDeleteModal.modal('close');
     });
+}
+
+function openHelp()
+{
+    $('#helpModal').modal('open');
+}
+
+function helpClosed()
+{
+    storage.setItem('slark.whitelist.help', true);
 }

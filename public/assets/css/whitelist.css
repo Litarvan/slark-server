@@ -50,6 +50,9 @@
     margin-top: 2px;
 }
 
-.spinner-layer {
-    border-color: #00c6e5;
+.btn-floating {
+    background-color: #00c6e5;
+    position: absolute;
+    bottom: 17.5px;
+    right: 15px;
 }

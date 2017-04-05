@@ -58,11 +58,26 @@
                     <a id="d-trigger" class="modal-action waves-effect btn-flat">Oui</a>
                 </div>
             </div>
+
+            <div id="helpModal" class="modal">
+                <div class="modal-content">
+                    <h4>P'tite aide</h4>
+
+                    <b>Cliquez</b> sur une entrée pour <b>la supprimer</b><br/><br/>
+
+                    Pour <b>ajouter une entrée</b> vous pouvez faire <b>entrée</b> sur la page.<br/>
+                    Vous pouvez aussi faire <b>entrée</b> dans les boîtes de dialogue pour <b>valider</b>, et <b>échap</b> pour <b>annuler</b>.<br />
+                </div>
+                <div class="modal-footer">
+                    <a class="modal-action modal-close waves-effect waves-green btn-flat" onclick="helpClosed()">Pigé</a>
+                </div>
+            </div>
         </div>
 
         <a class="btn waves-effect waves-light" onclick="addDialog()">Ajouter une entrée</a>
     </div>
 
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="openHelp()"><i class="fa fa-question"></i></a>
     <div id="buffer">
         <div class="preloader-wrapper active">
             <div class="spinner-layer">
