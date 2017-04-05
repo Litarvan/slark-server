@@ -84,7 +84,7 @@ nav ul, nav li, nav a {
     background-color: #00c6e5;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover, .btn:focus, .tap-target {
     background-color: #00b6d5;
 }
 

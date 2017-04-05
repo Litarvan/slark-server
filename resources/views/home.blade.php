@@ -19,7 +19,12 @@
 
 @extends('main')
 
-@section('title', 'Test')
+@section('title', 'Accueil')
 
 @section('content')
+
+@endsection
+
+@section('js')
+    <script src="{{ asset('assets/js/home.js') }}"></script>
 @endsection

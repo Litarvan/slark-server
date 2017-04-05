@@ -19,6 +19,17 @@
 
 var dialog = false;
 
+var elDTrigger = $('#d-trigger');
+var elValue = $('#value');
+var elAddModal = $('#addModal');
+var elBuffer = $('#buffer');
+var elFile = $('#file');
+var elDeleteModal = $('#deleteModal');
+var elANo = $('#a-no');
+var elATrigger = $('#a-trigger');
+var elList = $('#list');
+var elDNo = $('#d-no');
+
 $(document).ready(function()
 {
     $('.modal').modal({
@@ -37,7 +48,7 @@ $('body').on('keydown', function(e)
 
        if (dialog)
        {
-           eval($("#d-trigger").attr('onclick'));
+           eval(elDTrigger.attr('onclick'));
        }
        else
        {
@@ -46,7 +57,7 @@ $('body').on('keydown', function(e)
    }
 });
 
-$('#value').on('keydown', function(e)
+elValue.on('keydown', function(e)
 {
     if (e.which === 13)
     {
@@ -57,23 +68,23 @@ $('#value').on('keydown', function(e)
 
 function addDialog()
 {
-    $("#addModal").modal('open');
-    $('#value').focus();
+    elAddModal.modal('open');
+    elValue.focus();
 }
 
 function deleteDialog(id, file)
 {
     dialog = true;
 
-    $("#file").html(file);
-    $("#d-trigger").attr('onclick', 'deleteEntry(' + id + ', "' + file + '")');
+    elFile.html(file);
+    elDTrigger.attr('onclick', 'deleteEntry(' + id + ', "' + file + '")');
 
-    $('#deleteModal').modal('open');
+    elDeleteModal.modal('open');
 }
 
 function addEntry()
 {
-    var input = $("#value");
+    var input = elValue;
     var value = input.val();
 
     if (value === '')
@@ -81,8 +92,8 @@ function addEntry()
         return;
     }
 
-    $("#a-no").css('display', 'none');
-    $("#a-trigger").html($("#buffer").html()).attr('onclick', '');
+    elANo.css('display', 'none');
+    $(elATrigger.html(elBuffer.html())).attr('onclick', '');
     input.attr('readonly', '');
 
     $.ajax(window.location.href, {
@@ -91,14 +102,14 @@ function addEntry()
             value: value
         }
     }).done(function() {
-        $("#a-no").css('display', 'inherit');
-        $("#a-trigger").html("Oui").attr('onclick', 'addEntry()');
-        $("#addModal").modal('close');
+        elANo.css('display', 'inherit');
+        elATrigger.html('Valider').attr('onclick', 'addEntry()');
+        elAddModal.modal('close');
         input.removeAttr('readonly');
         input.val('');
 
         var id = window.nextId;
-        $("#list").append('<a class="waves-effect collection-item" id="file-' + id + '" onclick="deleteDialog(' + id + ', \'' + value + '\')"><i class="fa ' + (value.endsWith('/') ? 'fa-folder' : (value.match(/\*/g) || value.match(/\?/g) ? 'fa-files-o' : 'fa-file')) + '"></i> ' + value + '</a>');
+        elList.append('<a class="waves-effect collection-item" id="file-' + id + '" onclick="deleteDialog(' + id + ', \'' + value + '\')"><i class="fa ' + (value.endsWith('/') ? 'fa-folder' : (value.match(/\*/g) || value.match(/\?/g) ? 'fa-files-o' : 'fa-file')) + '"></i> ' + value + '</a>');
 
         window.nextId++;
     });
@@ -106,8 +117,8 @@ function addEntry()
 
 function deleteEntry(id, file)
 {
-    $("#d-no").css('display', 'none');
-    $("#d-trigger").html($("#buffer").html()).attr('onclick', '');
+    elDNo.css('display', 'none');
+    elDTrigger.html(elBuffer.html()).attr('onclick', '');
 
     $.ajax(window.location.href, {
         method: 'DELETE',
@@ -115,10 +126,10 @@ function deleteEntry(id, file)
             file: file
         }
     }).done(function() {
-        $("#d-no").css('display', 'inherit');
+        elDNo.css('display', 'inherit');
         $("#file-" + id).remove();
-        $("#d-trigger").html("Oui");
+        elDTrigger.html("Oui");
 
-        $("#deleteModal").modal('close');
+        elDeleteModal.modal('close');
     });
 }
